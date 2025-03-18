@@ -1,27 +1,25 @@
 const express = require('express');
 const router = express.Router();
+import logindetails from '../model/logindetails';
 
 module.exports = router;
 
-// getting all
-router.get('/', (req , res) => {
 
-})
-// getting one
-router.get('/:id', (req , res) => {
 
-})
-//creating one
-router.post('/', (req , res) => {
-
-})
-//updating one
-router.patch('/:id', (req , res) => {
-
+router.get('/:id',  (req , res) => {
+res.send(req.params.id);
 })
 
-// deleteing one 
-
-router.delete('/:id', (req , res) => {
+router.post('/', async (req , res) => {
+    const login = new logindetails({
+        name: req.body.name,
+        required : req.body.required
+    })
+    try {
+        const log = await login.save()
+        res.status(201).json(log);
+    } catch (error) {
+        res.status(400).json({message : error})
+    }
 
 })

@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-module.export = mongoose.model('login' , logindetails)
+module.exports = mongoose.model('login' , logindetails)
 
 const logindetails = new mongoose.Schema({
     name:{
